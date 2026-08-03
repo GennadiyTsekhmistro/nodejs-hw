@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
   "start": "node src/server.js",
-  "dev": "nodemon src/server.js"
+  "dev": "nodemon src/server.js",
+  "lint": "eslint ."
 },
   "repository": {
     "type": "git",
@@ -26,7 +27,9 @@
     "pino-http": "^11.0.0"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "eslint": "^10.8.0",
+    "globals": "^17.9.0",
     "nodemon": "^3.1.14",
     "prettier": "^3.9.6"
   }
