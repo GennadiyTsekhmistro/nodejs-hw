@@ -1,5 +1,6 @@
 import { Note } from '../models/note.js';
 import createHttpError from 'http-errors';
+
 export const getAllNotes = async (req, res) => {
   const notes = await Note.find();
 
@@ -40,7 +41,7 @@ export const updateNote = async (req, res) => {
   const { noteId } = req.params;
 
   const note = await Note.findByIdAndUpdate(noteId, req.body, {
-    new: true,
+    returnDocument: 'after',
   });
 
   if (!note) {

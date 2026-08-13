@@ -1,8 +1,14 @@
-export const errorHandler = (err, req, res, next) => {
-  void req;
-  void next;
+import { isHttpError } from 'http-errors';
 
-  res.status(err.status || 500).json({
+export const errorHandler = (err, req, res) => {
+  if (isHttpError(err)) {
+    res.status(err.status).json({
+      message: err.message,
+    });
+    return;
+  }
+
+  res.status(500).json({
     message: err.message,
   });
 };
