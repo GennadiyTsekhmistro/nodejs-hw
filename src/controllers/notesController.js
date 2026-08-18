@@ -2,9 +2,14 @@ import { Note } from '../models/note.js';
 import createHttpError from 'http-errors';
 
 export const getAllNotes = async (req, res) => {
-  const notes = await Note.find();
+  const { page, perPage, tag, search } = req.query;
 
-  res.status(200).json(notes);
+  res.status(200).json({
+    page,
+    perPage,
+    tag,
+    search,
+  });
 };
 
 export const getNoteById = async (req, res) => {
