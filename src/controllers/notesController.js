@@ -3,7 +3,6 @@ import createHttpError from 'http-errors';
 
 export const getAllNotes = async (req, res) => {
   const { page, perPage, tag, search } = req.query;
-
   const skip = (page - 1) * perPage;
 
   const notesQuery = Note.find({ userId: req.user._id });
@@ -58,6 +57,7 @@ export const createNote = async (req, res) => {
 
   res.status(201).json(note);
 };
+
 export const deleteNote = async (req, res) => {
   const { noteId } = req.params;
 
@@ -70,7 +70,7 @@ export const deleteNote = async (req, res) => {
     throw createHttpError(404, 'Note not found');
   }
 
-  res.status(200).json(note);
+  res.status(204).send();
 };
 
 export const updateNote = async (req, res) => {
