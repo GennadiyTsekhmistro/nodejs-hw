@@ -14,7 +14,9 @@ import authRoutes from './routes/authRoutes.js';
 
 dotenv.config();
 
-dns.setServers(['192.168.0.1']);
+if (process.env.NODE_ENV !== 'production') {
+  dns.setServers(['192.168.0.1']);
+}
 
 const PORT = process.env.PORT || 3000;
 
