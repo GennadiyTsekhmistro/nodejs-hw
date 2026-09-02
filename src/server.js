@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';
+import 'dotenv/config';
 import cookieParser from 'cookie-parser';
 import { errors } from 'celebrate';
 import dns from 'node:dns';
@@ -12,8 +12,6 @@ import { errorHandler } from './middleware/errorHandler.js';
 import notesRoutes from './routes/notesRoutes.js';
 import authRoutes from './routes/authRoutes.js';
 import userRoutes from './routes/userRoutes.js';
-
-dotenv.config();
 
 if (process.env.NODE_ENV !== 'production') {
   dns.setServers(['192.168.0.1']);
